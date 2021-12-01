@@ -7,32 +7,39 @@ passwordRange();
 console.log("Hey! You clicked the button");
 
 //lowercase Letters Randomize
-function getRandomLowercase() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
- }
- console.log(getRandomLowercase());
-
+  if (confirm("Should the password contain lowercase letters?")) {
+    function getRandomLowercase() {
+      return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+    }
+    console.log(getRandomLowercase());
+  };
 
 //Uppercase letters Randomize
-function getRandomUppercase() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
- }
- console.log(getRandomUppercase());
-
+  if (confirm("Should the password contain uppercase letters?")) {
+    function getRandomUppercase() {
+      return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+    }
+    console.log(getRandomUppercase());
+  };
 
 //Numbers Randomize
-function getRandomNumber() {
-  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
- }
- console.log(getRandomNumber());
-
+  if (confirm("Should the password contain numbers?")) {
+    function getRandomNumber() {
+      return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+    }
+    console.log(getRandomNumber());
+  };
 //Symbols Randomize
-function getRandomSymbol() {
-  const symbols = '!"#$%&()*+,-./:;<=>?@[^_`{|}~';
-  return symbols[Math.floor(Math.random() * symbols.length)];
-  }
-  console.log(getRandomSymbol());
+  if (confirm("Should the password contain symbols")) {
+    function getRandomSymbol() {
+    const symbols = '!"#$%&()*+,-./:;<=>?@[^_`{|}~';
+      return symbols[Math.floor(Math.random() * symbols.length)];
+    }
+    console.log(getRandomSymbol());
+  };
 
+
+  //Returns password value to display box
   return "Generated password will go here!";
 
 };
@@ -40,7 +47,7 @@ function getRandomSymbol() {
 //Function to set password range
 var passwordRange = function() {
   var range = "";
-
+  // while (range === "" || range === null || isNaN(range) || range < 8 || range > 128)
   while (range === "" || range === null || isNaN(range) || range < 8 || range > 128) {
     range = prompt("How many characters would you like your password to contain? (Choose a length of at least 8 characters and no more than 128 characters)");
   }
