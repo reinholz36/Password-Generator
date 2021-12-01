@@ -1,30 +1,52 @@
 // Assignment code here
-//lowercase Letters
+
+function generatePassword() {
+
+passwordRange();
+
+console.log("Hey! You clicked the button");
+
+//lowercase Letters Randomize
 function getRandomLowercase() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
  }
  console.log(getRandomLowercase());
 
 
-//Uppercase letters
+//Uppercase letters Randomize
 function getRandomUppercase() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
  }
  console.log(getRandomUppercase());
 
 
-//numbers range
+//Numbers Randomize
 function getRandomNumber() {
   return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
  }
  console.log(getRandomNumber());
 
-//symbols range
+//Symbols Randomize
 function getRandomSymbol() {
-  const symbols = '!@#$%^&*(){}[]=<>/,.?';
+  const symbols = '!"#$%&()*+,-./:;<=>?@[^_`{|}~';
   return symbols[Math.floor(Math.random() * symbols.length)];
   }
   console.log(getRandomSymbol());
+
+  return "Generated password will go here!";
+
+};
+
+//Function to set password range
+var passwordRange = function() {
+  var range = "";
+
+  while (range === "" || range === null || isNaN(range) || range < 8 || range > 128) {
+    range = prompt("How many characters would you like your password to contain? (Choose a length of at least 8 characters and no more than 128 characters)");
+  }
+  console.log("User selected password that is " + range + " characters long");
+  return range;
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -64,3 +86,18 @@ generateBtn.addEventListener("click", writePassword);
 
 // WHEN the password is generated
 // THEN the password is either displayed in an alert or written to the page
+
+//Personal Pseudo Code
+//Click generate password
+//Presented with a prompt that asks the lengh of the password desired
+//Present alert if user selects any responce lower than 8 characters or more than 128
+//User response length is is logged 
+
+//User selects True/False if they want uppercase letters
+//If true add random uppercase letters based on length
+//If false skip adding uppercase letters and log false 
+
+//User selects True/False if they want lowercase letters
+//If true add random Lowercase letters based on length
+//If false skip adding Lowercase letters
+
