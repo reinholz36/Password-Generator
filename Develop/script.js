@@ -1,48 +1,37 @@
 // Assignment code here
 
-function generatePassword() {
 
-passwordRange();
 
-console.log("Hey! You clicked the button");
 
-//lowercase Letters Randomize
-  if (confirm("Should the password contain lowercase letters?")) {
+
+
+  //lowercase Letters Randomize
     function getRandomLowercase() {
       return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-    }
+    };
     console.log(getRandomLowercase());
-  };
 
 //Uppercase letters Randomize
-  if (confirm("Should the password contain uppercase letters?")) {
     function getRandomUppercase() {
       return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-    }
+    };
     console.log(getRandomUppercase());
-  };
 
 //Numbers Randomize
-  if (confirm("Should the password contain numbers?")) {
     function getRandomNumber() {
       return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
     }
     console.log(getRandomNumber());
-  };
+  
 //Symbols Randomize
-  if (confirm("Should the password contain symbols")) {
     function getRandomSymbol() {
     const symbols = '!"#$%&()*+,-./:;<=>?@[^_`{|}~';
       return symbols[Math.floor(Math.random() * symbols.length)];
     }
     console.log(getRandomSymbol());
-  };
-
-
-  //Returns password value to display box
-  return "Generated password will go here!";
-
-};
+  
+//Start of Main Generate Password Function
+function generatePassword() {
 
 //Function to set password range
 var passwordRange = function() {
@@ -51,9 +40,37 @@ var passwordRange = function() {
   while (range === "" || range === null || isNaN(range) || range < 8 || range > 128) {
     range = prompt("How many characters would you like your password to contain? (Choose a length of at least 8 characters and no more than 128 characters)");
   }
-  console.log("User selected password that is " + range + " characters long");
   return range;
 };
+console.log(passwordRange());
+
+//Check if lower, upper, number, symbol type should be used
+var typeCheck = function() {
+
+while (!lowerCheck && !upperCheck && !numberCheck && !symbolCheck) {
+  window.alert("Next select whether you'd like lowercase, uppercase, numbers, or symbols add. (At least one type should be selected to generate password.)")
+var lowerCheck = (confirm("Should the password contain lowercase letters?"));
+var upperCheck = (confirm("Should the password contain uppercase letters?"));
+var numberCheck = (confirm("Should the password contain numbers?"));
+var symbolCheck = (confirm("Should the password contain symbols"));
+}
+console.log(lowerCheck);
+console.log(upperCheck);
+console.log(numberCheck);
+console.log(symbolCheck);
+};
+typeCheck();
+
+
+
+
+  
+  //Returns password value to display box
+  return "Generated password will go here!";
+
+};
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
