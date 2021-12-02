@@ -36,7 +36,6 @@ function generatePassword() {
 //Function to set password range
 var passwordRange = function() {
   var range = "";
-  // while (range === "" || range === null || isNaN(range) || range < 8 || range > 128)
   while (range === "" || range === null || isNaN(range) || range < 8 || range > 128) {
     range = prompt("How many characters would you like your password to contain? (Choose a length of at least 8 characters and no more than 128 characters)");
   }
