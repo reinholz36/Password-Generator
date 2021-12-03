@@ -2,7 +2,7 @@
 
 ## Overview: 
 
-I added the promps, alerts, veribals and functions within JavaScript to get the password generator up and running. Note: template HTML and CSS provided by UNC. 
+I added the promps, alerts, variables and functions within JavaScript to get the password generator up and running. Note: template HTML and CSS provided by UNC. 
 
 View live site at: https://reinholz36.github.io/Password-Generator/
 
