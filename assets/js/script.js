@@ -1,34 +1,25 @@
 // Assignment code here
 
-
-
-
-
-
-  //lowercase Letters Randomize
+//lowercase Letters Randomize
     function getRandomLowercase() {
       return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
     };
-    console.log(getRandomLowercase());
-
+    
 //Uppercase letters Randomize
     function getRandomUppercase() {
       return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
     };
-    console.log(getRandomUppercase());
-
+    
 //Numbers Randomize
     function getRandomNumber() {
       return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-    }
-    console.log(getRandomNumber());
-  
+    };
+    
 //Symbols Randomize
     function getRandomSymbol() {
     const symbols = '!"#$%&()*+,-./:;<=>?@[^_`{|}~';
       return symbols[Math.floor(Math.random() * symbols.length)];
-    }
-    console.log(getRandomSymbol());
+    };
   
 //Start of Main Generate Password Function
 function generatePassword() {
@@ -41,35 +32,59 @@ var passwordRange = function() {
   }
   return range;
 };
-console.log(passwordRange());
+//The + converts the return string into a integer. 
+const totalRange = +passwordRange();
 
-//Check if lower, upper, number, symbol type should be used
+//Check if lower, upper, number, symbol type should be used (confirm returns either true or false)
 var typeCheck = function() {
 
 while (!lowerCheck && !upperCheck && !numberCheck && !symbolCheck) {
-  window.alert("Next select whether you'd like lowercase, uppercase, numbers, or symbols add. (At least one type should be selected to generate password.)")
-var lowerCheck = (confirm("Should the password contain lowercase letters?"));
-var upperCheck = (confirm("Should the password contain uppercase letters?"));
-var numberCheck = (confirm("Should the password contain numbers?"));
-var symbolCheck = (confirm("Should the password contain symbols"));
+  window.alert("Next select whether you would like lowercase, uppercase, numbers, or symbols add. (At least one type should be selected to generate password.)")
+  var lowerCheck = (confirm("Should the password contain lowercase letters?"));
+  var upperCheck = (confirm("Should the password contain uppercase letters?"));
+  var numberCheck = (confirm("Should the password contain numbers?"));
+  var symbolCheck = (confirm("Should the password contain symbols"));
 }
-console.log(lowerCheck);
-console.log(upperCheck);
-console.log(numberCheck);
-console.log(symbolCheck);
-};
-typeCheck();
 
+//This array compiles the true/false returns from lowerCheck, upperCheck, numberCheck, symbolCheck variables
+var typeArr = [lowerCheck, upperCheck, numberCheck, symbolCheck];
 
-
-
-  
-  //Returns password value to display box
-  return "Generated password will go here!";
-
+//Checks to see if lowerCheck is true and if so passes the function gerRandomLowercase. If false it returns a blank array
+const lowerCheckValueForGenerator = function () {
+  if (lowerCheck === true) {
+    return [getRandomLowercase]
+  } else {
+    return []
+  }
 };
 
+// ... is the spread operator and does similar things as the lowerCheckValueForGenerator function above
+const generators = [
+  ...lowerCheckValueForGenerator(),
+  ...(upperCheck ? [getRandomUppercase] : []),
+  ...(numberCheck ? [getRandomNumber] : []),
+  ...(symbolCheck ? [getRandomSymbol] : [])
+]
 
+console.log('typeArr:', typeArr);
+
+//Creates an array based on the totalRange 
+const passwordArray = Array.apply(null, Array(totalRange))
+const characters = passwordArray.map((empty, i) => {
+  return generators[i % generators.length]()
+
+}).join('')
+
+console.log('characters', characters)
+return characters;
+
+};
+//Invoking typeCheck function
+const characters = typeCheck();
+
+//Returns password value to display box
+return characters;
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -84,43 +99,6 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+document.getElementById("generate").addEventListener("click", writePassword);
 
-
-//From Acceptance Criteria 
-
-// GIVEN I need a new, secure password
-// WHEN I click the button to generate a password
-// THEN I am presented with a series of prompts for password criteria
-// WHEN prompted for password criteria
-// THEN I select which criteria to include in the 
-
-// WHEN prompted for the length of the password
-// THEN I choose a length of at least 8 characters and no more than 128 characters
-
-// WHEN asked for character types to include in the password
-// THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
-
-//Personal Pseudo Code
-//Click generate password
-//Presented with a prompt that asks the lengh of the password desired
-//Present alert if user selects any responce lower than 8 characters or more than 128
-//User response length is is logged 
-
-//User selects True/False if they want uppercase letters
-//If true add random uppercase letters based on length
-//If false skip adding uppercase letters and log false 
-
-//User selects True/False if they want lowercase letters
-//If true add random Lowercase letters based on length
-//If false skip adding Lowercase letters
 
